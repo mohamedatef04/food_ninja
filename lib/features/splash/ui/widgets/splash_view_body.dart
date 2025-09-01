@@ -18,11 +18,24 @@ class SplashViewBody extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(Assets.imagesLogo2, height: 139.h, width: 175.w),
-            Text(
-              'Food Ninja',
-              style: AppStyles.black22.copyWith(
-                fontSize: 40.sp,
-                color: AppColors.primaryColor,
+            Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: 'Food',
+                    style: AppStyles.black22.copyWith(
+                      fontSize: 40.sp,
+                      color: AppColors.primaryColorLight,
+                    ),
+                  ),
+                  TextSpan(
+                    text: 'Ninja',
+                    style: AppStyles.black22.copyWith(
+                      fontSize: 40.sp,
+                      color: AppColors.primaryColor,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
