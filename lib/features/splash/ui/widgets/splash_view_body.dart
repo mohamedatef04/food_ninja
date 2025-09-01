@@ -3,9 +3,24 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery_app/core/theme/app_colors.dart';
 import 'package:food_delivery_app/core/theme/app_styles.dart';
 import 'package:food_delivery_app/core/utils/assets.dart';
+import 'package:food_delivery_app/features/on_boarding/ui/views/on_boarding_view.dart';
+import 'package:go_router/go_router.dart';
 
-class SplashViewBody extends StatelessWidget {
+class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
+
+  @override
+  State<SplashViewBody> createState() => _SplashViewBodyState();
+}
+
+class _SplashViewBodyState extends State<SplashViewBody> {
+  @override
+  void initState() {
+    Future.delayed(const Duration(seconds: 2)).then(
+      (value) => GoRouter.of(context).pushReplacement(OnBoardingView.routeName),
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
