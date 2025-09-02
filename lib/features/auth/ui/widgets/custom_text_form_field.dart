@@ -51,23 +51,23 @@ class CustomTextFormField extends StatelessWidget {
         filled: true,
         hintStyle: const TextStyle(color: AppColors.greyColor),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20.r),
+          borderRadius: BorderRadius.circular(15.r),
           borderSide: BorderSide(
-            color: AppColors.darkGreyColor,
+            color: const Color.fromARGB(226, 210, 215, 219),
             width: 1.w,
           ),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20.r),
+          borderRadius: BorderRadius.circular(15.r),
           borderSide: BorderSide(
-            color: AppColors.darkGreyColor,
+            color: const Color.fromARGB(226, 210, 215, 219),
             width: 1.w,
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20.r),
+          borderRadius: BorderRadius.circular(15.r),
           borderSide: BorderSide(
-            color: AppColors.darkGreyColor,
+            color: const Color.fromARGB(226, 210, 215, 219),
             width: 1.w,
           ),
         ),

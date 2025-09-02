@@ -11,8 +11,9 @@ class ForgetPasswordWidget extends StatelessWidget {
       onTap: () {},
       child: Text(
         'Forget Password?',
-        style: AppStyles.white16.copyWith(
-          color: AppColors.blackColor,
+        style: AppStyles.black12.copyWith(
+          color: AppColors.primaryColor,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );

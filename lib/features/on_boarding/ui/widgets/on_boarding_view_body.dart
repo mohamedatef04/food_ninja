@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/core/theme/app_colors.dart';
 import 'package:food_delivery_app/core/utils/assets.dart';
+import 'package:food_delivery_app/features/auth/ui/views/log_in_view.dart';
 import 'package:food_delivery_app/features/on_boarding/data/on_boarding_item_model.dart';
 import 'package:food_delivery_app/features/on_boarding/ui/widgets/on_boarding_item.dart';
+import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
@@ -35,7 +37,9 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
         title: 'Food Ninja is Where Your\nComfort Food Lives',
         subtitle: 'Enjoy a fast and smooth food delivery at\nyour doorstep',
         buttonText: 'Get Started',
-        onTap: () {},
+        onTap: () {
+          GoRouter.of(context).pushReplacement(LogInView.routeName);
+        },
       ),
     ];
     super.initState();
