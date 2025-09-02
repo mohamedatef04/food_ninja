@@ -5,7 +5,7 @@ import 'package:food_delivery_app/core/functions/show_snak_bar.dart';
 import 'package:food_delivery_app/core/theme/app_colors.dart';
 import 'package:food_delivery_app/core/theme/app_styles.dart';
 import 'package:food_delivery_app/core/utils/assets.dart';
-import 'package:food_delivery_app/features/auth/logic/cubits/sign_up_cubit.dart';
+import 'package:food_delivery_app/features/auth/logic/cubits/sign_up/sign_up_cubit.dart';
 import 'package:food_delivery_app/features/auth/ui/widgets/agree_to_conditions_widget.dart';
 import 'package:food_delivery_app/features/auth/ui/widgets/already_have_an_account_widget.dart';
 import 'package:food_delivery_app/features/auth/ui/widgets/custom_text_form_field.dart';
@@ -25,6 +25,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
+  bool obsecureText = true;
 
   @override
   void dispose() {
@@ -117,6 +118,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                     ),
                     CustomTextFormField(
                       controller: _passwordController,
+                      obscureText: obsecureText,
                       prefixIcon: Transform.scale(
                         scale: 0.5,
                         child: Image.asset(
@@ -126,8 +128,17 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       ),
                       hintText: 'Password',
                       suffixIcon: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.remove_red_eye),
+                        onPressed: () {
+                          setState(() {
+                            obsecureText = !obsecureText;
+                          });
+                        },
+                        icon: Icon(
+                          obsecureText
+                              ? Icons.visibility_off
+                              : Icons.remove_red_eye,
+                          color: AppColors.primaryColor,
+                        ),
                       ),
                       validator: (p0) {
                         if (p0!.isEmpty) {

@@ -6,4 +6,9 @@ abstract class AuthRepo {
     required String email,
     required String password,
   });
+
+  Future<Either<Failures, Unit>> logIn({
+    required String email,
+    required String password,
+  });
 }
