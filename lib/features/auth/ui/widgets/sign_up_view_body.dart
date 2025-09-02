@@ -162,6 +162,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                             context,
                             message: 'Account Created Successfully',
                           );
+
                           GoRouter.of(context).pop();
                         } else if (state is SignUpFailureState) {
                           showSnakBar(
@@ -178,6 +179,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                             if (_formKey.currentState!.validate()) {
                               _formKey.currentState!.save();
                               context.read<SignUpCubit>().createAccount(
+                                name: _nameController.text.trim(),
                                 email: _emailController.text.trim(),
                                 password: _passwordController.text.trim(),
                               );

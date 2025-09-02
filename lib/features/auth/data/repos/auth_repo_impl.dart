@@ -1,5 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:food_delivery_app/core/errors/failures.dart';
+import 'package:food_delivery_app/core/network/constants.dart';
+import 'package:food_delivery_app/features/auth/data/models/user_model.dart';
 import 'package:food_delivery_app/features/auth/logic/repos/auth_repo.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -7,6 +9,7 @@ class AuthRepoImpl implements AuthRepo {
   final SupabaseClient supabase = Supabase.instance.client;
   @override
   Future<Either<Failures, Unit>> signUp({
+    required String name,
     required String email,
     required String password,
   }) async {
@@ -14,6 +17,9 @@ class AuthRepoImpl implements AuthRepo {
       await supabase.auth.signUp(
         email: email,
         password: password,
+      );
+      storeUserData(
+        userModel: UserModel(name: name, email: email),
       );
 
       return const Right(unit);
@@ -51,6 +57,24 @@ class AuthRepoImpl implements AuthRepo {
   Future<Either<Failures, Unit>> resetPassword({required String email}) async {
     try {
       await supabase.auth.resetPasswordForEmail(email);
+      return const Right(unit);
+    } on Exception catch (e) {
+      return Left(
+        ServerFailure(errorMessage: e.toString()),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failures, Unit>> storeUserData({
+    required UserModel userModel,
+  }) async {
+    try {
+      await supabase.from(usersTable).insert({
+        'name': userModel.name,
+        'email': userModel.email,
+        'image_url': userModel.imageUrl,
+      });
       return const Right(unit);
     } on Exception catch (e) {
       return Left(
