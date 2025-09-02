@@ -9,8 +9,11 @@ void showSnakBar(
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       duration: const Duration(seconds: 1),
-      content: Text(message, style: AppStyles.white16),
-      backgroundColor: AppColors.primaryColorLight,
+      content: Text(
+        message,
+        style: AppStyles.white16.copyWith(fontWeight: FontWeight.w400),
+      ),
+      backgroundColor: AppColors.primaryColor,
     ),
   );
 }

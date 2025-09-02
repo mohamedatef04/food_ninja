@@ -10,6 +10,7 @@ import 'package:food_delivery_app/features/auth/ui/widgets/agree_to_conditions_w
 import 'package:food_delivery_app/features/auth/ui/widgets/already_have_an_account_widget.dart';
 import 'package:food_delivery_app/features/auth/ui/widgets/custom_text_form_field.dart';
 import 'package:food_delivery_app/features/on_boarding/ui/widgets/custom_button.dart';
+import 'package:go_router/go_router.dart';
 
 class SignUpViewBody extends StatefulWidget {
   const SignUpViewBody({super.key});
@@ -23,7 +24,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
+  AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
 
   @override
   void dispose() {
@@ -36,103 +37,152 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Form(
-        key: _formKey,
-        autovalidateMode: _autovalidateMode,
-        child: SafeArea(
-          child: SizedBox(
-            width: MediaQuery.sizeOf(context).width,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Column(
-                spacing: 10.h,
-                children: [
-                  Image.asset(Assets.imagesLogo2, height: 139.h, width: 175.w),
-                  Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(
-                          text: 'Food',
-                          style: AppStyles.black22.copyWith(
-                            fontSize: 40.sp,
-                            color: AppColors.primaryColorLight,
+      body: SingleChildScrollView(
+        child: Form(
+          key: _formKey,
+          autovalidateMode: _autovalidateMode,
+          child: SafeArea(
+            child: SizedBox(
+              width: MediaQuery.sizeOf(context).width,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Column(
+                  spacing: 10.h,
+                  children: [
+                    Image.asset(
+                      Assets.imagesLogo2,
+                      height: 139.h,
+                      width: 175.w,
+                    ),
+                    Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(
+                            text: 'Food',
+                            style: AppStyles.black22.copyWith(
+                              fontSize: 40.sp,
+                              color: AppColors.primaryColorLight,
+                            ),
                           ),
-                        ),
-                        TextSpan(
-                          text: 'Ninja',
-                          style: AppStyles.black22.copyWith(
-                            fontSize: 40.sp,
-                            color: AppColors.primaryColor,
+                          TextSpan(
+                            text: 'Ninja',
+                            style: AppStyles.black22.copyWith(
+                              fontSize: 40.sp,
+                              color: AppColors.primaryColor,
+                            ),
                           ),
+                        ],
+                      ),
+                    ),
+
+                    Text('Sign Up For Free ', style: AppStyles.black20),
+
+                    CustomTextFormField(
+                      controller: _nameController,
+                      prefixIcon: Transform.scale(
+                        scale: 0.5,
+                        child: Image.asset(
+                          Assets.imagesUser,
+                          width: 10.w,
                         ),
-                      ],
-                    ),
-                  ),
-
-                  Text('Sign Up For Free ', style: AppStyles.black20),
-
-                  CustomTextFormField(
-                    prefixIcon: Transform.scale(
-                      scale: 0.5,
-                      child: Image.asset(
-                        Assets.imagesUser,
-                        width: 10.w,
                       ),
+                      hintText: 'Name',
+                      validator: (p0) {
+                        if (p0!.isEmpty) {
+                          return 'Name is required';
+                        }
+                        return null;
+                      },
                     ),
-                    hintText: 'Name',
-                  ),
-                  CustomTextFormField(
-                    prefixIcon: Transform.scale(
-                      scale: 0.5,
-                      child: Image.asset(
-                        Assets.imagesMessage,
-                        height: 10.h,
+                    CustomTextFormField(
+                      controller: _emailController,
+                      prefixIcon: Transform.scale(
+                        scale: 0.5,
+                        child: Image.asset(
+                          Assets.imagesMessage,
+                          height: 10.h,
+                        ),
                       ),
+                      hintText: 'Email',
+                      validator: (p0) {
+                        if (p0!.isEmpty) {
+                          return 'Email is required';
+                        } else if (!RegExp(
+                          r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+                        ).hasMatch(p0)) {
+                          return 'Enter a valid email';
+                        }
+                        return null;
+                      },
                     ),
-                    hintText: 'Email',
-                  ),
-                  CustomTextFormField(
-                    prefixIcon: Transform.scale(
-                      scale: 0.5,
-                      child: Image.asset(
-                        Assets.imagesLock,
-                        height: 10.h,
+                    CustomTextFormField(
+                      controller: _passwordController,
+                      prefixIcon: Transform.scale(
+                        scale: 0.5,
+                        child: Image.asset(
+                          Assets.imagesLock,
+                          height: 10.h,
+                        ),
                       ),
+                      hintText: 'Password',
+                      suffixIcon: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.remove_red_eye),
+                      ),
+                      validator: (p0) {
+                        if (p0!.isEmpty) {
+                          return 'Password is required';
+                        } else if (!RegExp(
+                          r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$',
+                        ).hasMatch(p0)) {
+                          return 'Password must be ≥8 chars, include upper\nlower, number & special char';
+                        } else {
+                          return null;
+                        }
+                      },
                     ),
-                    hintText: 'Password',
-                    suffixIcon: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.remove_red_eye),
-                    ),
-                  ),
 
-                  const AgreeToConditionsWidget(),
+                    const AgreeToConditionsWidget(),
 
-                  BlocConsumer<SignUpCubit, SignUpState>(
-                    listener: (context, state) {
-                      if (state is SignUpSuccessState) {
-                        showSnakBar(
-                          context,
-                          message: 'Account Created Successfully',
+                    BlocConsumer<SignUpCubit, SignUpState>(
+                      listener: (context, state) {
+                        if (state is SignUpSuccessState) {
+                          showSnakBar(
+                            context,
+                            message: 'Account Created Successfully',
+                          );
+                          GoRouter.of(context).pop();
+                        } else if (state is SignUpFailureState) {
+                          showSnakBar(
+                            context,
+                            message: state.errorMessage,
+                          );
+                        }
+                      },
+                      builder: (context, state) {
+                        return CustomButton(
+                          isLoading: state is SignUpLoadingState,
+                          buttonText: 'Create Account',
+                          onTap: () {
+                            if (_formKey.currentState!.validate()) {
+                              _formKey.currentState!.save();
+                              context.read<SignUpCubit>().createAccount(
+                                email: _emailController.text.trim(),
+                                password: _passwordController.text.trim(),
+                              );
+                            } else {
+                              setState(() {
+                                _autovalidateMode = AutovalidateMode.always;
+                              });
+                            }
+                          },
                         );
-                      } else if (state is SignUpFailureState) {
-                        showSnakBar(
-                          context,
-                          message: state.errorMessage,
-                        );
-                      }
-                    },
-                    builder: (context, state) {
-                      return CustomButton(
-                        isLoading: state is SignUpLoadingState,
-                        buttonText: 'Create Account',
-                        onTap: () {},
-                      );
-                    },
-                  ),
+                      },
+                    ),
 
-                  const AlreadyHaveAnAccountWidget(),
-                ],
+                    const AlreadyHaveAnAccountWidget(),
+                  ],
+                ),
               ),
             ),
           ),

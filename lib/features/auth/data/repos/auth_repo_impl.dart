@@ -11,11 +11,19 @@ class AuthRepoImpl implements AuthRepo {
     required String password,
   }) async {
     try {
-      await supabase.auth.signUp(email: email, password: password);
+      await supabase.auth.signUp(
+        email: email,
+        password: password,
+      );
+
       return const Right(unit);
     } on AuthException catch (e) {
       return Left(
         ServerFailure(errorMessage: e.message),
+      );
+    } catch (e) {
+      return Left(
+        ServerFailure(errorMessage: e.toString()),
       );
     }
   }
