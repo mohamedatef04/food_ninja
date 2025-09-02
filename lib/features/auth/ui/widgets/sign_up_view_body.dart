@@ -3,14 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery_app/core/theme/app_colors.dart';
 import 'package:food_delivery_app/core/theme/app_styles.dart';
 import 'package:food_delivery_app/core/utils/assets.dart';
-import 'package:food_delivery_app/features/auth/ui/widgets/custom_dont_have_an_account_widget.dart';
+import 'package:food_delivery_app/features/auth/ui/widgets/agree_to_conditions_widget.dart';
+import 'package:food_delivery_app/features/auth/ui/widgets/already_have_an_account_widget.dart';
 import 'package:food_delivery_app/features/auth/ui/widgets/custom_text_form_field.dart';
-import 'package:food_delivery_app/features/auth/ui/widgets/forget_password_widget.dart';
-import 'package:food_delivery_app/features/auth/ui/widgets/google_sign_widget.dart';
 import 'package:food_delivery_app/features/on_boarding/ui/widgets/custom_button.dart';
 
-class LogInViewBody extends StatelessWidget {
-  const LogInViewBody({super.key});
+class SignUpViewBody extends StatelessWidget {
+  const SignUpViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -45,22 +44,48 @@ class LogInViewBody extends StatelessWidget {
                   ),
                 ),
 
-                Text('Login To Your Account', style: AppStyles.black20),
+                Text('Sign Up For Free ', style: AppStyles.black20),
 
-                const CustomTextFormField(hintText: 'Email'),
-                const CustomTextFormField(hintText: 'Password'),
-
-                Text(
-                  'or Continue With',
-                  style: AppStyles.black12.copyWith(
-                    fontWeight: FontWeight.bold,
+                CustomTextFormField(
+                  prefixIcon: Transform.scale(
+                    scale: 0.5,
+                    child: Image.asset(
+                      Assets.imagesUser,
+                      width: 10.w,
+                    ),
+                  ),
+                  hintText: 'Name',
+                ),
+                CustomTextFormField(
+                  prefixIcon: Transform.scale(
+                    scale: 0.5,
+                    child: Image.asset(
+                      Assets.imagesMessage,
+                      height: 10.h,
+                    ),
+                  ),
+                  hintText: 'Email',
+                ),
+                CustomTextFormField(
+                  prefixIcon: Transform.scale(
+                    scale: 0.5,
+                    child: Image.asset(
+                      Assets.imagesLock,
+                      height: 10.h,
+                    ),
+                  ),
+                  hintText: 'Password',
+                  suffixIcon: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.remove_red_eye),
                   ),
                 ),
-                const GoogleSignWidget(),
-                const ForgetPasswordWidget(),
-                CustomButton(buttonText: 'Login', onTap: () {}),
 
-                const CustomDontHaveAnAccountWidget(),
+                const AgreeToConditionsWidget(),
+
+                CustomButton(buttonText: 'Create Account', onTap: () {}),
+
+                const AlreadyHaveAnAccountWidget(),
               ],
             ),
           ),

@@ -81,5 +81,9 @@ class Assets {
   /// Assets for imagesShape
   /// assets/images/shape.png
   static const String imagesShape = "assets/images/shape.png";
+
+  /// Assets for imagesUser
+  /// assets/images/user.png
+  static const String imagesUser = "assets/images/user.png";
 }
 

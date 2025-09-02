@@ -1,4 +1,5 @@
 import 'package:food_delivery_app/features/auth/ui/views/log_in_view.dart';
+import 'package:food_delivery_app/features/auth/ui/views/sign_up_view.dart';
 import 'package:food_delivery_app/features/on_boarding/ui/views/on_boarding_view.dart';
 import 'package:food_delivery_app/features/splash/ui/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
@@ -17,10 +18,10 @@ final router = GoRouter(
       path: LogInView.routeName,
       builder: (context, state) => const LogInView(),
     ),
-    // GoRoute(
-    //   path: SignUpView.routeName,
-    //   builder: (context, state) => const SignUpView(),
-    // ),
+    GoRoute(
+      path: SignUpView.routeName,
+      builder: (context, state) => const SignUpView(),
+    ),
     // GoRoute(
     //   path: ChangePasswordView.routeName,
     //   builder: (context, state) => const ChangePasswordView(),
