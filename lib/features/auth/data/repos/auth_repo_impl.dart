@@ -46,4 +46,16 @@ class AuthRepoImpl implements AuthRepo {
       );
     }
   }
+
+  @override
+  Future<Either<Failures, Unit>> resetPassword({required String email}) async {
+    try {
+      await supabase.auth.resetPasswordForEmail(email);
+      return const Right(unit);
+    } on Exception catch (e) {
+      return Left(
+        ServerFailure(errorMessage: e.toString()),
+      );
+    }
+  }
 }
