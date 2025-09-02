@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery_app/core/functions/initalize_supabase.dart';
 import 'package:food_delivery_app/core/routes/app_routes.dart';
+import 'package:food_delivery_app/core/services/get_it_service.dart';
 import 'package:food_delivery_app/core/theme/app_colors.dart';
 
 void main() async {
   await initSupabase();
+  initGetIt();
   runApp(const FoodNinja());
 }
 

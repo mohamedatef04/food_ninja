@@ -4,9 +4,15 @@ import 'package:food_delivery_app/core/theme/app_colors.dart';
 import 'package:food_delivery_app/core/theme/app_styles.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, required this.buttonText, this.onTap});
+  const CustomButton({
+    super.key,
+    required this.buttonText,
+    this.onTap,
+    this.isLoading = false,
+  });
   final String buttonText;
   final void Function()? onTap;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +32,14 @@ class CustomButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(20.r),
         ),
         child: Center(
-          child: Text(
-            buttonText,
-            style: AppStyles.white16,
-          ),
+          child: isLoading
+              ? const CircularProgressIndicator(
+                  color: Colors.white,
+                )
+              : Text(
+                  buttonText,
+                  style: AppStyles.white16,
+                ),
         ),
       ),
     );
