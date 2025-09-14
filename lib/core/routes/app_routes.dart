@@ -14,7 +14,7 @@ final router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => const SplashView(),
+      builder: (context, state) => const MainHomeView(),
     ),
     GoRoute(
       path: OnBoardingView.routeName,

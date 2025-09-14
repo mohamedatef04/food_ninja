@@ -2,6 +2,14 @@
 class Assets {
   Assets._();
   
+  /// Assets for imagesAll
+  /// assets/images/all.png
+  static const String imagesAll = "assets/images/all.png";
+
+  /// Assets for imagesBlackHeart
+  /// assets/images/black_heart.png
+  static const String imagesBlackHeart = "assets/images/black_heart.png";
+
   /// Assets for imagesCart
   /// assets/images/cart.png
   static const String imagesCart = "assets/images/cart.png";
@@ -10,6 +18,14 @@ class Assets {
   /// assets/images/congrats.png
   static const String imagesCongrats = "assets/images/congrats.png";
 
+  /// Assets for imagesDrinks
+  /// assets/images/drinks.png
+  static const String imagesDrinks = "assets/images/drinks.png";
+
+  /// Assets for imagesFastFood
+  /// assets/images/fast_food.png
+  static const String imagesFastFood = "assets/images/fast_food.png";
+
   /// Assets for imagesFilter
   /// assets/images/Filter.png
   static const String imagesFilter = "assets/images/Filter.png";
@@ -17,6 +33,10 @@ class Assets {
   /// Assets for imagesGoogleIcon
   /// assets/images/google-icon.png
   static const String imagesGoogleIcon = "assets/images/google-icon.png";
+
+  /// Assets for imagesGroup
+  /// assets/images/Group.png
+  static const String imagesGroup = "assets/images/Group.png";
 
   /// Assets for imagesHeart
   /// assets/images/heart.png
@@ -69,6 +89,10 @@ class Assets {
   /// Assets for imagesOnboarding2Light
   /// assets/images/onboarding_2_light.png
   static const String imagesOnboarding2Light = "assets/images/onboarding_2_light.png";
+
+  /// Assets for imagesPizza
+  /// assets/images/pizza.png
+  static const String imagesPizza = "assets/images/pizza.png";
 
   /// Assets for imagesProfile
   /// assets/images/Profile.png
