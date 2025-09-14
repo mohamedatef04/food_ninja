@@ -1,7 +1,12 @@
 import 'package:food_delivery_app/features/auth/ui/views/forget_password_view.dart';
 import 'package:food_delivery_app/features/auth/ui/views/log_in_view.dart';
 import 'package:food_delivery_app/features/auth/ui/views/sign_up_view.dart';
+import 'package:food_delivery_app/features/cart/ui/views/cart_view.dart';
+import 'package:food_delivery_app/features/favourites/ui/views/favourites_view.dart';
+import 'package:food_delivery_app/features/home/ui/views/home_view.dart';
+import 'package:food_delivery_app/features/home/ui/views/main_home_view.dart';
 import 'package:food_delivery_app/features/on_boarding/ui/views/on_boarding_view.dart';
+import 'package:food_delivery_app/features/profile/ui/views/profile_view.dart';
 import 'package:food_delivery_app/features/splash/ui/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -27,6 +32,7 @@ final router = GoRouter(
       path: ForgetPasswordView.routeName,
       builder: (context, state) => const ForgetPasswordView(),
     ),
+
     // GoRoute(
     //   path: VerifyAccountView.routeName,
     //   builder: (context, state) => const VerifyAccountView(),
@@ -49,16 +55,16 @@ final router = GoRouter(
     //   path: VerifyAccountView.routeName,
     //   builder: (context, state) => const VerifyAccountView(),
     // ),
+    GoRoute(
+      path: MainHomeView.routeName,
+      builder: (context, state) => const MainHomeView(),
+    ),
 
-    // GoRoute(
-    //   path: MainHomeView.routeName,
-    //   builder: (context, state) => const MainHomeView(),
-    // ),
+    GoRoute(
+      path: HomeView.routeName,
+      builder: (context, state) => const HomeView(),
+    ),
 
-    // GoRoute(
-    //   path: HomeView.routeName,
-    //   builder: (context, state) => const HomeView(),
-    // ),
     // GoRoute(
     //   path: SpecialAdvertisementsView.routeName,
     //   builder: (context, state) => const SpecialAdvertisementsView(),
@@ -69,11 +75,19 @@ final router = GoRouter(
     //     advertiseModel: state.extra as AdvertiseModel,
     //   ),
     // ),
+    GoRoute(
+      path: CartView.routeName,
+      builder: (context, state) => const CartView(),
+    ),
+    GoRoute(
+      path: FavouritesView.routeName,
+      builder: (context, state) => const FavouritesView(),
+    ),
+    GoRoute(
+      path: ProfileView.routeName,
+      builder: (context, state) => const ProfileView(),
+    ),
 
-    // GoRoute(
-    //   path: FavouritesView.routeName,
-    //   builder: (context, state) => const FavouritesView(),
-    // ),
     // GoRoute(
     //   path: PublishAdvertiseView.routeName,
     //   builder: (context, state) => const PublishAdvertiseView(),

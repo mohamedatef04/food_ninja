@@ -10,7 +10,9 @@ import 'package:food_delivery_app/features/auth/ui/widgets/custom_dont_have_an_a
 import 'package:food_delivery_app/features/auth/ui/widgets/custom_text_form_field.dart';
 import 'package:food_delivery_app/features/auth/ui/widgets/forget_password_widget.dart';
 import 'package:food_delivery_app/features/auth/ui/widgets/google_sign_widget.dart';
+import 'package:food_delivery_app/features/home/ui/views/main_home_view.dart';
 import 'package:food_delivery_app/features/on_boarding/ui/widgets/custom_button.dart';
+import 'package:go_router/go_router.dart';
 
 class LogInViewBody extends StatefulWidget {
   const LogInViewBody({super.key});
@@ -137,8 +139,9 @@ class _LogInViewBodyState extends State<LogInViewBody> {
                     BlocConsumer<LogInCubit, LogInState>(
                       listener: (context, state) {
                         if (state is LogInSuccessState) {
-                          _emailController.clear();
-                          _passwordController.clear();
+                          GoRouter.of(
+                            context,
+                          ).pushReplacement(MainHomeView.routeName);
                         } else if (state is LogInErrorState) {
                           showSnakBar(context, message: state.errorMessage);
                         }
