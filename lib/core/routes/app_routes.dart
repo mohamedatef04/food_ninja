@@ -4,6 +4,7 @@ import 'package:food_delivery_app/features/auth/ui/views/sign_up_view.dart';
 import 'package:food_delivery_app/features/cart/ui/views/cart_view.dart';
 import 'package:food_delivery_app/features/favourites/ui/views/favourites_view.dart';
 import 'package:food_delivery_app/features/home/ui/views/home_view.dart';
+import 'package:food_delivery_app/features/home/ui/views/item_details_view.dart';
 import 'package:food_delivery_app/features/home/ui/views/main_home_view.dart';
 import 'package:food_delivery_app/features/on_boarding/ui/views/on_boarding_view.dart';
 import 'package:food_delivery_app/features/profile/ui/views/profile_view.dart';
@@ -31,6 +32,10 @@ final router = GoRouter(
     GoRoute(
       path: ForgetPasswordView.routeName,
       builder: (context, state) => const ForgetPasswordView(),
+    ),
+    GoRoute(
+      path: ItemDetailsView.routeName,
+      builder: (context, state) => const ItemDetailsView(),
     ),
 
     // GoRoute(

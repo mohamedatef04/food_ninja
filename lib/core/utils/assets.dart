@@ -54,6 +54,10 @@ class Assets {
   /// assets/images/Icon_Search.png
   static const String imagesIconSearch = "assets/images/Icon_Search.png";
 
+  /// Assets for imagesIconStar
+  /// assets/images/Icon_star.png
+  static const String imagesIconStar = "assets/images/Icon_star.png";
+
   /// Assets for imagesLocation
   /// assets/images/location.png
   static const String imagesLocation = "assets/images/location.png";
